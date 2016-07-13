@@ -113,7 +113,7 @@ body{
 	/*border-radius: 70px;*/
 	position: absolute;
 	background-image: url(../img/sunb.png);
-	background-position: center;*/
+	background-position: center;
 }
 .blemish{
 	position: inherit;
@@ -121,4 +121,13 @@ body{
 	height: 20px;
 	opacity: 0.4;
 	background-color: #ffffff;
+}
+.container {
+	top: 44%;
+    left: 48%;
+	margin: auto;
+	background-color: transparent;
+	/*border-radius: 70px;*/
+	position: absolute;
+	background-position: center;
 }

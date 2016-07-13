@@ -1,7 +1,7 @@
 'use strict';
 
 class SolarSystemModel {
-	
+
 	constructor () {
 		this.registerConstants();
 		this.registerPlanets();
@@ -22,7 +22,7 @@ class SolarSystemModel {
 			stars[i].style.left = Math.floor(Math.random() * this.CONSTANTS.clientScreenWidth)+"px";
 			stars[i].style.top = Math.floor(Math.random() * this.CONSTANTS.clientScreenHeight)+"px";
 
-			this.CONSTANTS.starsContainer.appendChild(stars[i]);  
+			this.CONSTANTS.starsContainer.appendChild(stars[i]);
 		}
 	}
 
@@ -49,13 +49,13 @@ class SolarSystemModel {
 			d.style.left = planet.style.left;
 			d.style.top = planet.style.top;
 
-			this.CONSTANTS.orbitsContainer.appendChild(d);  
+			this.CONSTANTS.orbitsContainer.appendChild(d);
 	    }
 	}
 
 	renderPlanets () {
 		this.planets = this.planets.sort((a, b) => {return a.speed < b.speed});
-		
+
 		this.planets.forEach((planet) => {
 			this.animatePlanet(planet.radius, planet.speed, document.getElementById(planet.id));
 		});
@@ -83,8 +83,8 @@ class SolarSystemModel {
 			{radius: 95, speed: 18, id: 'venus'},
 			{radius: 150, speed: 40, id: 'mars'},
 			{radius: 170, speed: 50, id: 'jupiter'},
-			{radius: 210, speed: 100, id: 'earth'},
-			{radius: 130, speed: 30, id: 'saturn'}
+			{radius: 210, speed: 100, id: 'saturn'},
+			{radius: 130, speed: 30, id: 'earth'}
 		];
 	}
 }
