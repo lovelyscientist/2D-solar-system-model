@@ -1,5 +1,5 @@
 # Solar System planets movement in 2D 
-<small>Successfully tested in Mozilla Firefox and Google Chrome</small>small>
+<small>Successfully tested in <b>Mozilla Firefox</b> and <b>Google Chrome</b></small>
 
 The application is using <b>native</b> ES6 JavaScript, so you need no dependecies to install.
 
