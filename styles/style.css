@@ -1,0 +1,124 @@
+body{
+	width: 100%;
+	height: 100%;
+	background-color: #020614;
+	overflow: hidden;
+}
+.stars{
+    width: 0;
+    height: 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 4px solid white;
+    position: absolute;
+    opacity: 0.9;
+}
+.dots{
+	width: 2px;
+    height: 1px;
+    position: absolute;
+    background-color: #b0e0e6;
+    opacity: 0.6;
+}
+#comet{
+	width: 100px;
+    height: 78px;
+    background-image: url(../img/comet.png);
+	background-position: center;
+	position: absolute;
+	background-color: transparent;
+	visibility: hidden;
+}
+#saturn{
+	width: 56px;
+	height: 41px;
+	background-color: transparent;
+	position: absolute;
+	background-position: center;
+	background-image: url(../img/saturn.png);
+	background-position: center;
+	position: absolute;
+    opacity: 0.8;
+}
+#uran{
+	width: 20px;
+	height: 20px;
+	background-color:#149923;
+	border-radius: 20px;
+	position: absolute;
+	background-position: center;
+	background-image: url(../img/uran.png);
+	background-position: center;
+}
+#jupiter{
+	width: 35px;
+	height: 35px;
+	background-color: #a76727;
+	border-radius: 35px;
+	position: absolute;
+	background-image: url(../img/jupiter.png);
+	background-position: center;
+}
+
+#mars{
+	width: 20px;
+	height: 20px;
+	background-color: #dd331d;
+	border-radius: 20px;
+	position: relative;
+	background-image: url(../img/mars.png);
+	background-position: center;
+}
+#venus{
+	width: 24px;
+	height: 24px;
+	background-color: red;
+	border-radius: 24px;
+	position: absolute;
+	background-image: url(../img/venus.png);
+	background-position: center;
+}
+#mercury{
+	width: 8px;
+	height: 8px;
+	background-color: #ffbf7f	;
+	border-radius: 8px;
+	position: relative;
+}
+#neptun{
+	width: 20px;
+	height: 20px;
+	background-color: #113dd8;
+	border-radius: 20px;
+	position: relative;
+	background-image: url(../img/neptun.png);
+	background-position: center;
+}
+#earth{
+	width: 32px;
+	height: 32px;
+	background-color: #19E3D9;
+	border-radius: 32px;
+	position: absolute;
+	background-image: url(../img/earth.png);
+	background-position: center;
+}
+#sun{
+	width: 70px;
+	height: 70px;
+	top: 44%;
+    left: 48%;
+    margin: auto;
+	background-color: transparent;
+	/*border-radius: 70px;*/
+	position: absolute;
+	background-image: url(../img/sunb.png);
+	background-position: center;*/
+}
+.blemish{
+	position: inherit;
+	width: 20px;
+	height: 20px;
+	opacity: 0.4;
+	background-color: #ffffff;
+}
