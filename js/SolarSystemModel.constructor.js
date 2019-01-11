@@ -77,13 +77,15 @@ class SolarSystemModel {
 
 	registerPlanets () {
 		this.planets = [
-			{radius: this.CONSTANTS.screenHeight-75, speed: 400, id: 'uran'},
-			{radius: this.CONSTANTS.screenHeight-55, speed: 800, id: 'neptun'},
+			{radius: this.CONSTANTS.screenHeight-15, speed: 400, id: 'uran'},
+			{radius: this.CONSTANTS.screenHeight-25, speed: 800, id: 'neptun'},
+			{radius: this.CONSTANTS.screenHeight-5, speed: 1200, id: 'pluto'},
 			{radius: 50, speed: 10, id: 'mercury'},
 			{radius: 95, speed: 18, id: 'venus'},
+			{radius: 125, speed: 40, id: 'earth'},
 			{radius: 150, speed: 40, id: 'mars'},
+			{radius: 160, speed: 100, id: 'asteroid'},
 			{radius: 170, speed: 50, id: 'jupiter'},
-			{radius: 210, speed: 100, id: 'earth'},
 			{radius: 130, speed: 30, id: 'saturn'}
 		];
 	}
