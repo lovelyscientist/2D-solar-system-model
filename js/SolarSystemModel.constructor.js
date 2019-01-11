@@ -86,7 +86,7 @@ class SolarSystemModel {
 			{radius: 150, speed: 40, id: 'mars'},
 			{radius: 160, speed: 100, id: 'asteroid'},
 			{radius: 170, speed: 50, id: 'jupiter'},
-			{radius: 180, speed: 30, id: 'saturn'}
+			{radius: 180, speed: 60, id: 'saturn'}
 		];
 	}
 }
