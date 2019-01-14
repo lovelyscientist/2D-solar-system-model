@@ -69,6 +69,14 @@ body{
 	background-image: url(../img/mars.png);
 	background-position: center;
 }
+#asteroid{
+	width: 8px;
+	height: 8px;
+	border-radius: 8px;
+	position: relative;
+	background-image: url(../img/asteroid.png);
+	background-position: center;
+}
 #venus{
 	width: 24px;
 	height: 24px;
@@ -84,6 +92,15 @@ body{
 	background-color: #ffbf7f	;
 	border-radius: 8px;
 	position: relative;
+}
+#pluto{
+	width: 8px;
+	height: 8px;
+	background-color: #113dd8;
+	border-radius: 8px;
+	position: relative;
+	background-image: url(../img/pluto.png);
+	background-position: center;
 }
 #neptun{
 	width: 20px;
@@ -113,7 +130,7 @@ body{
 	/*border-radius: 70px;*/
 	position: absolute;
 	background-image: url(../img/sunb.png);
-	background-position: center;*/
+	background-position: center;
 }
 .blemish{
 	position: inherit;
