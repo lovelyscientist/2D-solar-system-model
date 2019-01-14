@@ -15,7 +15,7 @@ body{
 }
 .dots{
 	width: 2px;
-    height: 1px;
+    height: 2px;
     position: absolute;
     background-color: #b0e0e6;
     opacity: 0.6;
