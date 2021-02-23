@@ -1,6 +1,8 @@
 # Solar System planets movement in 2D 
 
-![GIF of modelling](./img/solar_system.gif)
+To start the solar system simulation just open `index.html` in Mozilla Firefox or Google Chrome.
+
+![GIF of modelling](./img/solar-system.gif)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhirocsingh%2F2D-solar-system-model.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhirocsingh%2F2D-solar-system-model?ref=badge_shield)
 
