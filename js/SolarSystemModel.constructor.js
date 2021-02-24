@@ -20,34 +20,42 @@ class SolarSystemModel {
 			stars[i].className = 'stars';
 			stars[i].style.borderBottomColor = colorsRange[rcolor];
 			stars[i].style.left = Math.floor(Math.random() * this.CONSTANTS.clientScreenWidth)+"px";
-			stars[i].style.top = Math.floor(Math.random() * this.CONSTANTS.clientScreenHeight)+"px";
+			stars[i].style.bottom = Math.floor(Math.random() * this.CONSTANTS.clientScreenHeight)+"px";
 
 			this.CONSTANTS.starsContainer.appendChild(stars[i]);  
 		}
 	}
 
-	animatePlanet (radius, speed, planet) {
+	animatePlanet (id, distanceToSun, coefX, coefY, c, speed, planet) {
 		let s = 2 * this.CONSTANTS.PI/180,
 			dotCount = 0,
     		angle = 0;
 
-    	setInterval(() => {
-    		angle += s;
-    		dotCount++;
-    		planet.style.left = this.CONSTANTS.planetStartPosition + 2 * radius * Math.sin(angle)  + 'px';
-    		planet.style.top =  this.CONSTANTS.planetStartPosition + radius * Math.cos(angle) + 'px';
+        setInterval(() => {
+            angle -= s;
+            dotCount++;
+            planet.style.left =  50 * (c + coefX * Math.sin(angle)) + this.CONSTANTS.sunSizeInPx/2 + 'px'; //this.CONSTANTS.sunSizeInPx/2  +
+            planet.style.bottom =  50 * (coefY * Math.cos(angle)) + this.CONSTANTS.sunSizeInPx/2  + 'px';
+            this.createPlanetOrbit(dotCount, planet, id);
+        }, speed);
 
-    		this.createPlanetOrbit(dotCount, planet);
-    	}, speed);
 	}
 
-	createPlanetOrbit (dotCount, planet) {
+	createPlanetOrbit (dotCount, planet, id) {
 		if (dotCount % 2 === 0 && dotCount < this.CONSTANTS.fullCircleDegrees) {
     		let d = document.createElement('div');
 
-			d.className = "dots";
-			d.style.left = planet.style.left;
-			d.style.top = planet.style.top;
+    		if (id != 'mercury') {
+                d.className = "dots";
+                d.style.left = planet.style.left;
+                d.style.bottom = planet.style.bottom;
+            }
+            else {
+                console.log(planet.style.bottom)
+                d.className = "dots";
+                d.style.left = planet.style.left;
+                d.style.bottom = Number.parseInt(planet.style.bottom.replace('px', ''), 10) + 30 + 'px';
+             }
 
 			this.CONSTANTS.orbitsContainer.appendChild(d);  
 	    }
@@ -57,7 +65,7 @@ class SolarSystemModel {
 		this.planets = this.planets.sort((a, b) => {return a.speed < b.speed});
 		
 		this.planets.forEach((planet) => {
-			this.animatePlanet(planet.radius, planet.speed, document.getElementById(planet.id));
+			this.animatePlanet(planet.id, planet.distanceToSun, planet.coefX, planet.coefY, planet.c,  planet.speed, document.getElementById(planet.id));
 		});
 	}
 
@@ -71,22 +79,26 @@ class SolarSystemModel {
 			planetStartPosition: 30,
 			fullCircleDegrees: 360,
 			starsNumber: 250,
-			PI: Math.PI
+			PI: Math.PI,
+			sunBottomPosition: document.documentElement.clientHeight * 0.56,
+            sunLeftPosition:  document.documentElement.clientWidth * 0.48,
+            sunSizeInPx: 30,
+            uranCoef: 1.5,
+            neptunCoef: 2
 		};
+		console.log(this.CONSTANTS)
 	}
 
 	registerPlanets () {
 		this.planets = [
-			{radius: this.CONSTANTS.screenHeight-15, speed: 400, id: 'uran'},
-			{radius: this.CONSTANTS.screenHeight-25, speed: 800, id: 'neptun'},
-			{radius: this.CONSTANTS.screenHeight-5, speed: 1200, id: 'pluto'},
-			{radius: 50, speed: 10, id: 'mercury'},
-			{radius: 95, speed: 18, id: 'venus'},
-			{radius: 125, speed: 40, id: 'earth'},
-			{radius: 150, speed: 40, id: 'mars'},
-			{radius: 160, speed: 100, id: 'asteroid'},
-			{radius: 170, speed: 50, id: 'jupiter'},
-			{radius: 180, speed: 60, id: 'saturn'}
+//			{distanceToSun: 0.4, coefX: 0.387, coefY: 0.3788, c: 0.0796, speed: 10, id: 'mercury'},
+			{distanceToSun: 0.7, coefX: 0.7219, coefY: 0.7219, c: 0.0049, speed: 18, id: 'venus'},
+			{distanceToSun: 1, coefX: 1.0027, coefY: 1.0025, c: 0.0167, speed: 40, id: 'earth'},
+			{distanceToSun: 1.5, coefX: 1.5241, coefY: 1.5173, c: +.1424, speed: 40, id: 'mars'},
+        	{distanceToSun: 5.2, coefX: 5.2073, coefY: 5.2010, c: 0.2520, speed: 50, id: 'jupiter'},
+			{distanceToSun: 9.6, coefX: 9.5590, coefY: 9.5231, c: 0.5181, speed: 60, id: 'saturn'},
+			{distanceToSun: 19.2, coefX: 19.1848/this.CONSTANTS.uranCoef, coefY: 19.1645/this.CONSTANTS.uranCoef, c: 0.9055/this.CONSTANTS.uranCoef, speed: 400, id: 'uran'},
+            {distanceToSun: 30, coefX: 30.0806/this.CONSTANTS.neptunCoef, coefY: 30.0788/this.CONSTANTS.neptunCoef, c: 0.2587/this.CONSTANTS.neptunCoef, speed: 800, id: 'neptun'}
 		];
 	}
 }

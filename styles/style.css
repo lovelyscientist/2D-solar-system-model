@@ -30,8 +30,8 @@ body{
 	visibility: hidden;
 }
 #saturn{
-	width: 56px;
-	height: 41px;
+	width: 28px;
+	height: 20px;
 	background-color: transparent;
 	position: absolute;
 	background-position: center;
@@ -39,35 +39,39 @@ body{
 	background-position: center;
 	position: absolute;
     opacity: 0.8;
+    background-size: contain;
 }
 #uran{
-	width: 20px;
-	height: 20px;
+	width: 10px;
+	height: 10px;
 	background-color:#149923;
 	border-radius: 20px;
 	position: absolute;
 	background-position: center;
 	background-image: url(../img/uran.png);
 	background-position: center;
+	background-size: contain;
 }
 #jupiter{
-	width: 35px;
-	height: 35px;
+	width: 17px;
+	height: 17px;
 	background-color: #a76727;
 	border-radius: 35px;
 	position: absolute;
 	background-image: url(../img/jupiter.png);
 	background-position: center;
+	background-size: contain;
 }
 
 #mars{
-	width: 20px;
-	height: 20px;
+	width: 10px;
+	height: 10px;
 	background-color: #dd331d;
 	border-radius: 20px;
 	position: relative;
 	background-image: url(../img/mars.png);
 	background-position: center;
+	background-size: contain;
 }
 #asteroid{
 	width: 8px;
@@ -76,57 +80,65 @@ body{
 	position: relative;
 	background-image: url(../img/asteroid.png);
 	background-position: center;
+	background-size: contain;
+	background-size: contain;
 }
 #venus{
-	width: 24px;
-	height: 24px;
+	width: 12px;
+	height: 12px;
 	background-color: red;
 	border-radius: 24px;
 	position: absolute;
 	background-image: url(../img/venus.png);
 	background-position: center;
+	background-size: contain;
 }
 #mercury{
-	width: 8px;
-	height: 8px;
-	background-color: #ffbf7f	;
+	width: 4px;
+	height: 4px;
+	background-color: #ffbf7f;
 	border-radius: 8px;
 	position: relative;
+	background-size: contain;
 }
 #pluto{
-	width: 8px;
-	height: 8px;
+	width: 4px;
+	height: 4px;
 	background-color: #113dd8;
 	border-radius: 8px;
 	position: relative;
 	background-image: url(../img/pluto.png);
 	background-position: center;
+	background-size: contain;
 }
 #neptun{
-	width: 20px;
-	height: 20px;
+	width: 10px;
+	height: 10px;
 	background-color: #113dd8;
 	border-radius: 20px;
 	position: relative;
 	background-image: url(../img/neptun.png);
 	background-position: center;
+	background-size: contain;
 }
 #earth{
-	width: 32px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	background-color: #19E3D9;
 	border-radius: 32px;
 	position: absolute;
 	background-image: url(../img/earth.png);
 	background-position: center;
+	background-size: contain;
 }
 #sun{
-	width: 70px;
-	height: 70px;
+	width: 30px;
+	height: 30px;
 	top: 44%;
     left: 48%;
     margin: auto;
 	background-color: transparent;
+	background-size: contain;
 	/*border-radius: 70px;*/
 	position: absolute;
 	background-image: url(../img/sunb.png);
