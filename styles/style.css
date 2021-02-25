@@ -11,14 +11,22 @@ body{
     border-right: 2px solid transparent;
     border-bottom: 4px solid white;
     position: absolute;
-    opacity: 0.9;
+    opacity: 0.7;
 }
 .dots{
-	width: 2px;
-    height: 2px;
+	width: 1px;
+    height: 1px;
     position: absolute;
     background-color: #b0e0e6;
-    opacity: 0.6;
+    opacity: 0.3;
+}
+.asteroids{
+	width: 1px;
+    height: 1px;
+    position: absolute;
+    background-color: #b0e0e6;
+    opacity: 0.8;
+    border-radius: 2px;
 }
 #comet{
 	width: 100px;
@@ -68,7 +76,7 @@ body{
 	height: 10px;
 	background-color: #dd331d;
 	border-radius: 20px;
-	position: relative;
+	position: absolute;
 	background-image: url(../img/mars.png);
 	background-position: center;
 	background-size: contain;
@@ -98,7 +106,7 @@ body{
 	height: 4px;
 	background-color: #ffbf7f;
 	border-radius: 8px;
-	position: relative;
+	position: absolute;
 	background-size: contain;
 }
 #pluto{
@@ -136,13 +144,11 @@ body{
 	height: 30px;
 	top: 44%;
     left: 48%;
-    margin: auto;
 	background-color: transparent;
 	background-size: contain;
 	/*border-radius: 70px;*/
 	position: absolute;
 	background-image: url(../img/sunb.png);
-	background-position: center;
 }
 .blemish{
 	position: inherit;
