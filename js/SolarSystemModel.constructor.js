@@ -27,7 +27,7 @@ class SolarSystemModel {
 	}
 
 	animatePlanet (id, distanceToSun, coefX, coefY, c, speed, planet, angle) {
-		let s = 2 * this.CONSTANTS.PI/180,
+		let s = 2 * this.CONSTANTS.PI/(180*distanceToSun),
 			dotCount = 0
 
         setInterval(() => {
@@ -36,10 +36,10 @@ class SolarSystemModel {
             planet.style.left =  50 * (c + coefX * Math.sin(angle)) + this.CONSTANTS.sunSizeInPx/2 + 'px'; //this.CONSTANTS.sunSizeInPx/2  +
             planet.style.bottom =  50 * (coefY * Math.cos(angle)) + this.CONSTANTS.sunSizeInPx/2  + 'px';
 
-            if (!id.includes('asteroid')) {
-                this.createPlanetOrbit(dotCount, planet, id);
-            }
-        }, speed);
+            //if (!id.includes('asteroid')) {
+                //this.createPlanetOrbit(dotCount, planet, id);
+            //}
+        }, speed/(distanceToSun));
 
 	}
 
@@ -67,16 +67,16 @@ class SolarSystemModel {
 		this.planets = this.planets.sort((a, b) => {return a.speed < b.speed});
 		
 		this.planets.forEach((planet) => {
-			this.animatePlanet(planet.id, planet.distanceToSun, planet.coefX, planet.coefY, planet.c,  planet.speed, document.getElementById(planet.id), 0);
+			this.animatePlanet(planet.id, planet.distanceToSun, planet.coefX, planet.coefY, planet.c,  planet.speed, document.getElementById(planet.id), 90);
 		});
 
         for (let i = 0; i < 720; i++) {
-            let delta = this.sample_from_normal_distribution(1.2, 0.5),
+            let delta = this.sample_from_normal_distribution(0, 0.227),
                 aster = document.createElement('div');
             aster.className = "asteroids";
             aster.id = 'asteroid' + i;
-            aster.bottom =  this.CONSTANTS.sunBottomPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50 +  "px";
-			aster.left = this.CONSTANTS.sunLeftPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50  + "px";
+            aster.bottom =  this.CONSTANTS.sunBottomPosition + 2*this.CONSTANTS.PI/(i*this.asteroidBelt[0].distanceToSun ) +  "px";
+			aster.left = this.CONSTANTS.sunLeftPosition + 2*this.CONSTANTS.PI/(i*this.asteroidBelt[0].distanceToSun)  + "px";
 			this.CONSTANTS.asteroidsContainer.appendChild(aster);
             this.animatePlanet(this.asteroidBelt[0].id, this.asteroidBelt[0].distanceToSun, this.asteroidBelt[0].coefX + delta, this.asteroidBelt[0].coefY + delta, this.asteroidBelt[0].c,  this.asteroidBelt[0].speed, aster, i);
         }
