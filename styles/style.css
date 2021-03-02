@@ -4,6 +4,13 @@ body{
 	background-color: #020614;
 	overflow: hidden;
 }
+#asteroids{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    top: calc(44% - 200px);
+    left: calc(44% - 200px);
+}
 .stars{
     width: 0;
     height: 0;
@@ -23,10 +30,10 @@ body{
 .asteroids{
 	width: 1px;
     height: 1px;
-    position: absolute;
     background-color: #b0e0e6;
-    opacity: 0.8;
-    border-radius: 2px;
+    opacity: 1;
+    border-radius: 20px;
+    position: absolute;
 }
 #comet{
 	width: 100px;

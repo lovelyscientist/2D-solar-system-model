@@ -27,24 +27,37 @@ class SolarSystemModel {
 	}
 
 	animatePlanet (id, distanceToSun, coefX, coefY, c, speed, planet, angle) {
-		let s = 2 * this.CONSTANTS.PI/180,
+		let s = 2 * this.CONSTANTS.PI/(180*distanceToSun),
 			dotCount = 0
 
-        setInterval(() => {
-            angle -= s;
-            dotCount++;
-            planet.style.left =  50 * (c + coefX * Math.sin(angle)) + this.CONSTANTS.sunSizeInPx/2 + 'px'; //this.CONSTANTS.sunSizeInPx/2  +
-            planet.style.bottom =  50 * (coefY * Math.cos(angle)) + this.CONSTANTS.sunSizeInPx/2  + 'px';
+        if (id != 'asteroidMin') {
+            setInterval(() => {
+                angle -= s;
+                dotCount++;
+                planet.style.left =  50 * (c + coefX * Math.sin(angle)) + this.CONSTANTS.sunSizeInPx/2 + 'px'; //this.CONSTANTS.sunSizeInPx/2  +
+                planet.style.bottom =  50 * (coefY * Math.cos(angle)) + this.CONSTANTS.sunSizeInPx/2  + 'px';
 
-            if (!id.includes('asteroid')) {
-                this.createPlanetOrbit(dotCount, planet, id);
-            }
-        }, speed);
+                if (!id.includes('asteroid')) {
+                    this.createPlanetOrbit(dotCount, planet, distanceToSun, id);
+                }
+            }, speed/(distanceToSun*2));
+        }
+        else {
+            let s = 2 * this.CONSTANTS.PI/90,
+			dotCount = 0
+
+            setInterval(() => {
+                angle -= s;
+                dotCount++;
+                planet.style.transform = 'rotate(' + angle.toString()  + 'deg)'
+
+            }, speed/10);
+        }
 
 	}
 
-	createPlanetOrbit (dotCount, planet, id) {
-		if (dotCount % 2 === 0 && dotCount < this.CONSTANTS.fullCircleDegrees) {
+	createPlanetOrbit (dotCount, planet, distanceToSun, id) {
+		/*if (dotCount % 2 === 0 && dotCount < 2 * this.CONSTANTS.PI * distanceToSun * 10000) {
     		let d = document.createElement('div');
 
             d.className = "dots";
@@ -52,7 +65,7 @@ class SolarSystemModel {
             d.style.bottom = Number.parseInt(planet.style.bottom.replace('px', ''), 10) - 0 + 'px';
 
 			this.CONSTANTS.orbitsContainer.appendChild(d);  
-	    }
+	    } */
 	}
 
     sample_from_normal_distribution(mean, std) {
@@ -67,20 +80,53 @@ class SolarSystemModel {
 		this.planets = this.planets.sort((a, b) => {return a.speed < b.speed});
 		
 		this.planets.forEach((planet) => {
-			this.animatePlanet(planet.id, planet.distanceToSun, planet.coefX, planet.coefY, planet.c,  planet.speed, document.getElementById(planet.id), 0);
+			this.animatePlanet(planet.id, planet.distanceToSun, planet.coefX, planet.coefY, planet.c,  planet.speed, document.getElementById(planet.id), 90);
 		});
 
-        for (let i = 0; i < 720; i++) {
-            let delta = this.sample_from_normal_distribution(1.2, 0.5),
+        for (let i = 0; i < 2000; i++) {
+            let deltaX, deltaY,addDeltaX, addDeltaY,
                 aster = document.createElement('div');
             aster.className = "asteroids";
-            aster.id = 'asteroid' + i;
-            aster.bottom =  this.CONSTANTS.sunBottomPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50 +  "px";
-			aster.left = this.CONSTANTS.sunLeftPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50  + "px";
-			this.CONSTANTS.asteroidsContainer.appendChild(aster);
-            this.animatePlanet(this.asteroidBelt[0].id, this.asteroidBelt[0].distanceToSun, this.asteroidBelt[0].coefX + delta, this.asteroidBelt[0].coefY + delta, this.asteroidBelt[0].c,  this.asteroidBelt[0].speed, aster, i);
+
+            let signX, signY, X, Y;
+            signX = Math.random()
+            signY = Math.random()
+            addDeltaX = Math.random()
+            addDeltaY = Math.random()
+            X = Math.random()
+            Y = Math.random()
+            deltaX = this.sample_from_normal_distribution(1, 1)
+            deltaY = this.sample_from_normal_distribution(1, 1)
+
+            if (signX < 0.5) {
+                X = -X
+            }
+
+            if (signY < 0.5) {
+                Y = -Y
+            }
+
+            if (addDeltaX < 0.5) {
+                deltaX = -deltaX
+            }
+
+             if (addDeltaY < 0.5) {
+                deltaY = -deltaY
+            }
+
+            X = X/2 + addDeltaX/2
+            Y = Y/2 + addDeltaY/2
+
+            if ((Math.pow(X, 2) + Math.pow(Y, 2) <=  0.2) &&  (Math.pow(X, 2) + Math.pow(Y, 2) >=  0.1)) {
+                aster.style.bottom = 200 + Y * 400 + 'px' // this.CONSTANTS.sunBottomPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50 +  "px";
+                aster.style.left = 200 + X * 400 + 'px' //this.CONSTANTS.sunLeftPosition + 2*this.CONSTANTS.PI/i*this.asteroidBelt[0].distanceToSun * 50  + "px";
+                this.CONSTANTS.asteroidsContainer.appendChild(aster);
+            }
+
+            //this.animatePlanet(this.asteroidBelt[0].id, this.asteroidBelt[0].distanceToSun, this.asteroidBelt[0].coefX + delta, this.asteroidBelt[0].coefY + delta, this.asteroidBelt[0].c,  this.asteroidBelt[0].speed, aster, i);
         }
 
+        this.animatePlanet(this.asteroidBelt[0].id, this.asteroidBelt[0].distanceToSun, this.asteroidBelt[0].coefX, this.asteroidBelt[0].coefY, this.asteroidBelt[0].c,  this.asteroidBelt[0].speed, this.CONSTANTS.asteroidsContainer, 10);
 	}
 
 	registerConstants () {
