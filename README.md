@@ -1,4 +1,4 @@
-# Solar System planets movement in 2D 
+# 2D Solar System Simulation 
 
 To start the solar system simulation just open `index.html` in Mozilla Firefox or Google Chrome.
 
