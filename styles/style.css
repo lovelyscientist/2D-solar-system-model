@@ -4,6 +4,11 @@ body{
 	background-color: #020614;
 	overflow: hidden;
 }
+canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .stars{
     width: 0;
     height: 0;
@@ -11,7 +16,7 @@ body{
     border-right: 2px solid transparent;
     border-bottom: 4px solid white;
     position: absolute;
-    opacity: 0.7;
+    opacity: 0;
 }
 .dots{
 	width: 1px;
@@ -49,7 +54,7 @@ body{
     opacity: 0.8;
     background-size: contain;
 }
-#uran{
+#uranus{
 	width: 10px;
 	height: 10px;
 	background-color:#149923;
@@ -81,16 +86,6 @@ body{
 	background-position: center;
 	background-size: contain;
 }
-#asteroid{
-	width: 8px;
-	height: 8px;
-	border-radius: 8px;
-	position: relative;
-	background-image: url(../img/asteroid.png);
-	background-position: center;
-	background-size: contain;
-	background-size: contain;
-}
 #venus{
 	width: 12px;
 	height: 12px;
@@ -119,7 +114,7 @@ body{
 	background-position: center;
 	background-size: contain;
 }
-#neptun{
+#neptune{
 	width: 10px;
 	height: 10px;
 	background-color: #113dd8;
@@ -145,8 +140,9 @@ body{
 	top: 44%;
     left: 48%;
 	background-color: transparent;
-	background-size: contain;
-	/*border-radius: 70px;*/
+	background-size: 88%;
+	background-position: right;
+	background-repeat: no-repeat;
 	position: absolute;
 	background-image: url(../img/sunb.png);
 }

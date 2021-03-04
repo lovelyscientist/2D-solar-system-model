@@ -26,6 +26,11 @@ Inner belt 	    0.0559 ± 0.0023
 Middle belt 	0.0772 ± 0.0025  
 Outer belt 	    0.0974 ± 0.0047   
 
+*What's left*:
+- shadow of parts of the planets which are not turned to the Sun
+- relativity of rotation speed between planets
+- ? update of orbits when resizing screen
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhirocsingh%2F2D-solar-system-model.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhirocsingh%2F2D-solar-system-model?ref=badge_shield)
 
 <small>Successfully tested in <b>Mozilla Firefox</b> and <b>Google Chrome</b></small>
