@@ -1,7 +1,5 @@
 # 2D Solar System Simulation 
 
-![Solar System Gif]('./img/solar-system.gif'])
-
 To start the solar system simulation just open `SolarSystem.html` in Mozilla Firefox or Google Chrome.
 
 Formulas of planets movements referenced from:   

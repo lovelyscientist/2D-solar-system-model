@@ -50,7 +50,7 @@ canvas{
 	background-position: center;
 	background-image: url(../img/saturn.png);
 	background-position: center;
-	position: absolute;
+	position: relative;
     opacity: 0.8;
     background-size: contain;
 }
@@ -59,21 +59,30 @@ canvas{
 	height: 10px;
 	background-color:#149923;
 	border-radius: 20px;
-	position: absolute;
+	position: relative;
 	background-position: center;
 	background-image: url(../img/uran.png);
 	background-position: center;
 	background-size: contain;
 }
-#jupiter{
+#jupyter{
 	width: 17px;
 	height: 17px;
-	background-color: #a76727;
-	border-radius: 35px;
-	position: absolute;
+	background-color: #020614;
+	border-radius: 17px;
+	position: relative;
 	background-image: url(../img/jupiter.png);
-	background-position: center;
+	/*background-position: center;*/
+	background-repeat: no-repeat;
+	/*box-shadow: -9px 0px 0px 0px rgba(0,0,0,0.76) inset;*/
 	background-size: contain;
+}
+.planet-shadow{
+    width: 20px;
+	height: 20px;
+    background-color: teal; /*#020614;*/
+    position: relative;
+    top: -5px;
 }
 
 #mars{
@@ -81,7 +90,7 @@ canvas{
 	height: 10px;
 	background-color: #dd331d;
 	border-radius: 20px;
-	position: absolute;
+	position: relative;
 	background-image: url(../img/mars.png);
 	background-position: center;
 	background-size: contain;
@@ -91,7 +100,7 @@ canvas{
 	height: 12px;
 	background-color: red;
 	border-radius: 24px;
-	position: absolute;
+	position: relative;
 	background-image: url(../img/venus.png);
 	background-position: center;
 	background-size: contain;
@@ -104,35 +113,45 @@ canvas{
 	position: absolute;
 	background-size: contain;
 }
-#pluto{
-	width: 4px;
-	height: 4px;
-	background-color: #113dd8;
-	border-radius: 8px;
-	position: relative;
-	background-image: url(../img/pluto.png);
-	background-position: center;
-	background-size: contain;
-}
+
 #neptune{
 	width: 10px;
 	height: 10px;
 	background-color: #113dd8;
 	border-radius: 20px;
-	position: relative;
+	position: absolute;
 	background-image: url(../img/neptun.png);
 	background-position: center;
 	background-size: contain;
 }
+#earth-shadow {
+    background-color: #020614;
+    border-radius: 16px;
+    width: 16px;
+	height: 16px;
+	position: absolute;
+	z-index: 1000;
+	opacity: 0.85;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
 #earth{
 	width: 16px;
 	height: 16px;
-	background-color: #19E3D9;
+	background-color: #020614;
 	border-radius: 32px;
-	position: absolute;
+	position: relative;
 	background-image: url(../img/earth.png);
-	background-position: center;
+	background-repeat: no-repeat;
 	background-size: contain;
+}
+#mercury-container, #venus-container,
+ #earth-container, #mars-container,
+ #jupyter-container, #saturn-container,
+ #uranus-container, #neptune-container{
+    /*box-shadow: -8px 0px 0px 0px rgba(0,0,0,0.76) inset;*/
+    position: absolute;
 }
 #sun{
 	width: 30px;
