@@ -7,6 +7,7 @@ class SolarSystemModel {
 		this.registerPlanets();
 		this.renderPlanets();
 		this.renderOrbits();
+		this.renderShadows();
 		this.renderAsteroids();
 	}
 
@@ -19,7 +20,7 @@ class SolarSystemModel {
 	}
 
 	animate(id, semiMajorAxis, semiMinorAxis, centerToFocus, speed, planet, angle) {
-		let s = 2 * this.CONSTANTS.PI/(180*semiMajorAxis),
+		let s = (1/20)/Math.sqrt(semiMajorAxis),
 		    rotationAngle = 0, rotation_s,
 		    counter = 0, startLeft, startBottom, angleObj = {'angle': angle},
 		    targetProxy = new Proxy(angleObj, {
@@ -43,7 +44,7 @@ class SolarSystemModel {
             planet.style.bottom =  this.CONSTANTS.astronomicalUnitsToPx * (semiMinorAxis * Math.cos(targetProxy.angle))
                                 + this.CONSTANTS.sunSizeInPx/2 + 'px';
 
-        }, speed/semiMajorAxis);
+        }, speed/Math.sqrt(semiMajorAxis));
 
         if (id != 'asteroid') {
              let planetToRotate = document.getElementById(id.replace('-container', ''))
@@ -66,8 +67,8 @@ class SolarSystemModel {
 	        planet['size'] = document.getElementById(planet.id.replace('-container', '')).offsetWidth
 	    })
 
-		const canvas = document.getElementById('orbits');
-        const ctx = canvas.getContext('2d');
+		const canvas = document.getElementById('orbits'),
+		      ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -77,7 +78,6 @@ class SolarSystemModel {
         ctx.setLineDash([2]);
 
         this.planets.forEach((planet) => {
-            const canvas = document.getElementById('orbits');
             ctx.beginPath();
             ctx.ellipse(this.CONSTANTS.sunLeftPosition + this.CONSTANTS.sunRadius
                         + planet.centerToFocus*this.CONSTANTS.astronomicalUnitsToPx  + planet.orbitDelta,
@@ -89,27 +89,32 @@ class SolarSystemModel {
             ctx.stroke();
             ctx.closePath();
         });
+	}
+
+	renderShadows () {
+		const canvas = document.getElementById('orbits'),
+		      ctx = canvas.getContext('2d');
 
         ctx.strokeStyle = "#020614";
         ctx.globalCompositeOperation='destination-over';
-        ctx.globalAlpha = 0.8;
+        ctx.globalAlpha = 0.6;
         ctx.setLineDash([0]);
 
         this.planets.forEach((planet) => {
-            console.log(planet.size)
-            ctx.lineWidth = planet.shadowWidth;
-            ctx.beginPath();
-            ctx.ellipse(this.CONSTANTS.sunLeftPosition + this.CONSTANTS.sunRadius
-                            + planet.centerToFocus*this.CONSTANTS.astronomicalUnitsToPx  + planet.orbitDelta,
-                            this.CONSTANTS.sunTopPosition + this.CONSTANTS.sunRadius - planet.orbitDelta,
-                            planet.semiMajorAxis * this.CONSTANTS.astronomicalUnitsToPx + planet.size/2,
-                            planet.semiMinorAxis * this.CONSTANTS.astronomicalUnitsToPx + planet.size/2,
-                            0,
-                            0, 2 * Math.PI);
-            ctx.closePath();
-            ctx.stroke();
+            if (planet.id != 'mercury-container' && planet.id != 'neptune-container' && planet.id != 'uranus-container') {
+                ctx.lineWidth = planet.shadowWidth;
+                ctx.beginPath();
+                ctx.ellipse(this.CONSTANTS.sunLeftPosition + this.CONSTANTS.sunRadius
+                                + planet.centerToFocus*this.CONSTANTS.astronomicalUnitsToPx  + planet.orbitDelta,
+                                this.CONSTANTS.sunTopPosition + this.CONSTANTS.sunRadius - planet.orbitDelta,
+                                planet.semiMajorAxis * this.CONSTANTS.astronomicalUnitsToPx + planet.size/2,
+                                planet.semiMinorAxis * this.CONSTANTS.astronomicalUnitsToPx + planet.size/2,
+                                0,
+                                0, 2 * Math.PI);
+                ctx.closePath();
+                ctx.stroke();
+            }
         });
-
 	}
 
     sample_from_normal_distribution(mean, std) {
@@ -172,30 +177,29 @@ class SolarSystemModel {
             sunLeftPosition:  document.documentElement.clientWidth * 0.48,
             sunSizeInPx: 30,
             sunRadius: 15,
-            uranCoef: 1.5,
-            neptunCoef: 2,
+            uranusCoef: 1.5,
+            neptuneCoef: 2,
             asteroidsContainer: document.getElementById('asteroids'),
 		};
 	}
 
 	registerPlanets () {
 		this.planets = [
-			{distanceToSun: 0.4, semiMajorAxis: 0.387, semiMinorAxis: 0.3788, centerToFocus: 0.0796, speed: 10, id: 'mercury-container', orbitDelta: -0.25, shadowWidth: 0},
-			{distanceToSun: 0.7, semiMajorAxis: 0.7219, semiMinorAxis: 0.7219, centerToFocus: 0.0049, speed: 18, id: 'venus-container', orbitDelta: 5, shadowWidth: 10},
-			{distanceToSun: 1, semiMajorAxis: 1.1027, semiMinorAxis: 1.1025, centerToFocus: 0.0167, speed: 40, id: 'earth-container', orbitDelta: 7, shadowWidth: 15},
-			{distanceToSun: 1.5, semiMajorAxis: 1.6241, semiMinorAxis: 1.6173, centerToFocus: 0.1424, speed: 40, id: 'mars-container', orbitDelta: 5, shadowWidth: 8},
-        	{distanceToSun: 5.2, semiMajorAxis: 5.2073, semiMinorAxis:5.2010, centerToFocus: 0.2520, speed: 50, id: 'jupyter-container', orbitDelta: 9, shadowWidth: 20},
-			{distanceToSun: 9.6, semiMajorAxis: 9.5590, semiMinorAxis: 9.5231, centerToFocus: 0.5181, speed: 60, id: 'saturn-container', orbitDelta: 10, shadowWidth: 20},
-			{distanceToSun: 19.2, semiMajorAxis: 19.1848/this.CONSTANTS.uranCoef, semiMinorAxis: 19.1645/this.CONSTANTS.uranCoef, centerToFocus: 0.9055/this.CONSTANTS.uranCoef, speed: 400, id: 'uranus-container', orbitDelta: 6, shadowWidth: 20},
-            {distanceToSun: 30, semiMajorAxis: 30.0806/this.CONSTANTS.neptunCoef, semiMinorAxis: 30.0788/this.CONSTANTS.neptunCoef, centerToFocus: 0.2587/this.CONSTANTS.neptunCoef, speed: 800, id: 'neptune-container', orbitDelta: 9, shadowWidth: 20}
+			{distanceToSun: 0.4, semiMajorAxis: 0.387, semiMinorAxis: 0.3788, centerToFocus: 0.0796, speed: 8.7, id: 'mercury-container', orbitDelta: -0.25, shadowWidth: 0},
+			{distanceToSun: 0.7, semiMajorAxis: 0.7219, semiMinorAxis: 0.7219, centerToFocus: 0.0049, speed: 22.4, id: 'venus-container', orbitDelta: 5, shadowWidth: 10},
+			{distanceToSun: 1, semiMajorAxis: 1.1527, semiMinorAxis: 1.1525, centerToFocus: 0.0167, speed: 36.5, id: 'earth-container', orbitDelta: 7, shadowWidth: 15},
+			{distanceToSun: 1.5, semiMajorAxis: 1.6741, semiMinorAxis: 1.6773, centerToFocus: 0.1424, speed: 68.6, id: 'mars-container', orbitDelta: 5, shadowWidth: 8},
+        	{distanceToSun: 5.2, semiMajorAxis: 5.2073, semiMinorAxis:5.2010, centerToFocus: 0.2520, speed: 432.8, id: 'jupyter-container', orbitDelta: 9, shadowWidth: 20},
+			{distanceToSun: 9.6, semiMajorAxis: 9.5590, semiMinorAxis: 9.5231, centerToFocus: 0.5181, speed: 1073.8, id: 'saturn-container', orbitDelta: 12, shadowWidth: 20},
+			{distanceToSun: 19.2, semiMajorAxis: 19.1848/this.CONSTANTS.uranusCoef, semiMinorAxis: 19.1645/this.CONSTANTS.uranusCoef, centerToFocus: 0.9055/this.CONSTANTS.uranusCoef, speed: 3056.8, id: 'uranus-container', orbitDelta: 6, shadowWidth: 0},
+            {distanceToSun: 30, semiMajorAxis: 30.0806/this.CONSTANTS.neptuneCoef, semiMinorAxis: 30.0788/this.CONSTANTS.neptuneCoef, centerToFocus: 0.2587/this.CONSTANTS.neptuneCoef, speed: 5975.7, id: 'neptune-container', orbitDelta: 4, shadowWidth: 0}
 		];
 
 		this.mainAsteroidBelt = [
-		    {maxSemiMajorAxis: 2.2, standardDeviationCoef: 6,  number: 50, minSemiMajorAxis: 2, rayleighSigma: 0.0559, speed: 70, id: 'asteroid'},
-		    {maxSemiMajorAxis: 3.2, standardDeviationCoef: 2, number: 500, minSemiMajorAxis: 2.2,  rayleighSigma: 0.0772, speed: 70, id: 'asteroid'},
-		    {maxSemiMajorAxis: 4.6, standardDeviationCoef: 6, number: 50, minSemiMajorAxis: 3.2,  rayleighSigma: 0.0974, speed: 70, id: 'asteroid'}
+		    {maxSemiMajorAxis: 2.2, standardDeviationCoef: 6,  number: 50, minSemiMajorAxis: 2, rayleighSigma: 0.0559, speed: 133.2, id: 'asteroid'},
+		    {maxSemiMajorAxis: 3.2, standardDeviationCoef: 2, number: 500, minSemiMajorAxis: 2.2,  rayleighSigma: 0.0772, speed: 168.2, id: 'asteroid'},
+		    {maxSemiMajorAxis: 4.6, standardDeviationCoef: 6, number: 50, minSemiMajorAxis: 3.2,  rayleighSigma: 0.0974, speed: 203.3, id: 'asteroid'}
 		]
 	}
-
-	1.9
 }
+
