@@ -4,11 +4,31 @@ body{
 	background-color: #020614;
 	overflow: hidden;
 }
+
+#sound {
+   width: 30px;
+   height: 25px;
+   top: 30px;
+   left: 30px;
+   background-color: transparent;
+   position: absolute;
+   background-position: center;
+   background-image: url(../img/speaker_off.png);
+   background-position: left;
+   background-size: contain;
+   background-repeat: no-repeat;
+   cursor: pointer;
+   opacity: 0.6;
+}
+
+audio {
+    z-index: auto;
+}
 canvas{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2000;
+    z-index: auto;
 }
 .stars{
     width: 0;
@@ -32,7 +52,7 @@ canvas{
     position: absolute;
     background-color: #b0e0e6;
     opacity: 0.8;
-    border-radius: 2px;
+    border-radius: 6px;
 }
 #comet{
 	width: 100px;
@@ -47,11 +67,10 @@ canvas{
 	width: 28px;
 	height: 20px;
 	background-color: transparent;
-	position: absolute;
+	position: relative;
 	background-position: center;
 	background-image: url(../img/saturn.png);
 	background-position: center;
-	position: relative;
     opacity: 0.8;
     background-size: contain;
 }
@@ -120,7 +139,7 @@ canvas{
 	height: 10px;
 	background-color: #113dd8;
 	border-radius: 20px;
-	position: absolute;
+	position: relative;
 	background-image: url(../img/neptun.png);
 	background-position: center;
 	background-size: contain;
@@ -154,17 +173,27 @@ canvas{
     /*box-shadow: -8px 0px 0px 0px rgba(0,0,0,0.76) inset;*/
     position: absolute;
 }
+
 #sun{
 	width: 30px;
 	height: 30px;
 	top: 44%;
     left: 48%;
-	background-color: transparent;
-	background-size: 88%;
-	background-position: right;
-	background-repeat: no-repeat;
 	position: absolute;
+	transform-origin: center center;
+	z-index: -1;
+}
+
+#sun-container{
+    width: 27px;
+	height: 27px;
+	align: center;
+	margin-left: 3px;
+	background-color: transparent;
+	background-size: 100%;
+	background-repeat: no-repeat;
 	background-image: url(../img/sunb.png);
+	transform-origin: center center;
 }
 .blemish{
 	position: inherit;
