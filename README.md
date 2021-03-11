@@ -18,7 +18,9 @@ Box-Muller transformation (from uniform to normal distribution):
 *https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform*
 
 Info about planets:
-*https://nssdc.gsfc.nasa.gov/planetary/factsheet/*
+*https://nssdc.gsfc.nasa.gov/planetary/factsheet/*  
+
+Music by Colossal Trailer Music (Gaze).
 
 Sigma parameters of Rayleigh distribution of eccentricity of main asteroid belt:  
 
