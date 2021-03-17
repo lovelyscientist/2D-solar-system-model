@@ -1,4 +1,4 @@
-# 2D Solar System Simulation 
+# 2D Solar System Simulation :milky_way:
 
 Simplified 2D Solar System simulation (planets and main asteroid belt) built with JS ES6 native tools. There are no dependencies to install.
 To start the solar system simulation just open `SolarSystem.html` in Mozilla Firefox or Google Chrome.
