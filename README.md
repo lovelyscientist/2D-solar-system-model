@@ -23,8 +23,7 @@ We use the following restrictions on semi-major axis of asteroids' orbits and ge
 
 To compute **c** (the distance between the center of the orbit and the focus of the orbit) and **b** (semi-minor axis) for each asteroid we use semi-major axis and eccentricity values via formulas below:
 
-<img src="./img/formulas/a_c_formula.png" height="35">
-<img src="./img/formulas/b_formula.png" height="40">
+<img src="./img/formulas/a_c_formula.png" height="35"><img src="./img/formulas/b_formula.png" height="40">
 
 Planets of Solar System are moving according to parametric equations from [1]:
 (all coeficients in the simulation equal the coefficients below, except increased distances for Earth and Mars to avoid collapse of Earth and Venus orbits and decreased coefficients for Uranus and Neptune for their visibility on the screen) 
