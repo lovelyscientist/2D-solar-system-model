@@ -9,13 +9,13 @@ This simulation consists of two main parts: planets simulation and main asteroid
 To simulate the orbital movement of each asteroid in main asteroid belt, we use the following equations from [1]:    
 <img src="./img/formulas/x_asteroids.png" height="35" style="vertical-align:middle">  
 <img src="./img/formulas/y_asteroids.png" height="40">  
-<img src="./img/formulas/abbriv.png" height="40">  
+<img src="./img/formulas/abbriv.png" height="35">  
 
 According to [2] eccentricities of the asteroids in outer main asteroid belt follow Rayleigh distribution. We expanded this to inner and middle belt asteroids (values from [2]) with the following estimated parameter of distribution:  
 
-<img src="./img/formulas/rayleigh_sigma.png" height="150"> 
+<img src="./img/formulas/rayleigh_sigma.png" height="130"> 
 
-To generate eccentricities of asteroids, we sample from Rayleigh distribution with sigma parameters above using conversion from uniform distribution.
+To generate eccentricities of asteroids, we sample from Rayleigh distribution with sigma parameters above using conversion from uniform distribution.  
 <img src="./img/formulas/Rayleigh.png" height="40">
 
 We use the following restrictions on semi-major axis of asteroids' orbits and generate them using normal distribution (samples of normal distribution are retrieved from uniformly distributed numbers using Box-Muller transform):   
@@ -23,7 +23,7 @@ We use the following restrictions on semi-major axis of asteroids' orbits and ge
 
 To compute **c** (the distance between the center of the orbit and the focus of the orbit) and **b** (semi-minor axis) for each asteroid we use semi-major axis and eccentricity values via formulas below:
 
-<img src="./img/formulas/a_c_formula.png" height="40"> 
+<img src="./img/formulas/a_c_formula.png" height="35">
 <img src="./img/formulas/b_formula.png" height="40">
 
 Planets of Solar System are moving according to parametric equations from [1]:
