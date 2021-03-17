@@ -7,15 +7,16 @@ To start the solar system simulation just open `SolarSystem.html` in Mozilla Fir
 <img src="./img/formulas/planets_orbits.png">
 
 <img src="./img/formulas/abbriv.png" height="40">
-<img src="./img/formulas/x_asteroids.png" width="120">
+<img src="./img/formulas/x_asteroids.png" height="40">
 
 Some text here
 
-<img src="./img/formulas/y_asteroids.png" width="120">
-<img src="./img/formulas/semi_major_asteroids.png" width="120">
-<img src="./img/formulas/Rayleigh.png" width="120">
-<img src="./img/formulas/a_c_formula.png" width="120">
-<img src="./img/formulas/b_formula.png" width="120">
+<img src="./img/formulas/y_asteroids.png" height="40">
+<img src="./img/formulas/semi_major_asteroids.png" height="80">
+<img src="./img/formulas/rayleigh_sigma.png">
+<img src="./img/formulas/Rayleigh.png" height="40">
+<img src="./img/formulas/a_c_formula.png" height="40">
+<img src="./img/formulas/b_formula.png" height="40">
 
 Formulas of planets movements referenced from:   
 *Ramanakumar V (2018) Mathematically Describing Planetary Orbits in Two Dimensions. J Appl Computat Math 7: 414. doi: 10.4172/2168-
